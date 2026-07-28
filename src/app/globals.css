@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   KFG Sociedad de Inversión — Design tokens
+   Three layers: primitive -> semantic -> component.
+   Primitive values come from BRAND.md (paleta digital) and must not be
+   redefined ad hoc inside components.
+   ========================================================================== */
+
+@theme {
+  /* ---------- Primitive: brand palette ---------- */
+  --color-navy: #00283c;
+  --color-navy-mid: #1a4a56;
+  --color-teal: #508c96;
+  --color-teal-dark: #3e7880;
+  --color-teal-light: #7db8c0;
+
+  --color-white: #ffffff;
+  --color-tint: #edf5f6;
+  --color-pearl: #f4f6f8;
+  --color-ink: #0d2030;
+  --color-muted: #5b7280;
+  --color-line: #d8e2e6;
+  --color-line-strong: #c0cdd3;
+
+  --color-green: #1b8a5a;
+  --color-red: #c0392b;
+
+  /* ---------- Semantic: surfaces and content ---------- */
+  --color-surface: var(--color-white);
+  --color-surface-soft: var(--color-tint);
+  --color-surface-neutral: var(--color-pearl);
+  --color-surface-inverse: var(--color-navy);
+
+  --color-content: var(--color-ink);
+  --color-content-heading: var(--color-navy);
+  --color-content-secondary: var(--color-muted);
+  /* Small teal text needs teal-dark to clear 4.5:1 on light surfaces. */
+  --color-content-accent: var(--color-teal-dark);
+
+  --color-border: var(--color-line);
+  --color-border-strong: var(--color-line-strong);
+  --color-focus: var(--color-teal-dark);
+  --color-focus-inverse: var(--color-teal-light);
+
+  /* On dark (navy) surfaces */
+  --color-on-inverse: var(--color-white);
+  --color-on-inverse-secondary: rgb(255 255 255 / 0.78);
+  --color-on-inverse-tertiary: rgb(255 255 255 / 0.62);
+  --color-on-inverse-accent: var(--color-teal-light);
+  --color-border-inverse: rgb(255 255 255 / 0.16);
+  --color-border-inverse-strong: rgb(255 255 255 / 0.28);
+
+  /* ---------- Typography ---------- */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* ---------- Radii ---------- */
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+
+  /* ---------- Elevation: soft, navy-tinted, with offset + blur ---------- */
+  --shadow-subtle: 0 1px 2px -1px rgb(0 40 60 / 0.06), 0 4px 12px -6px rgb(0 40 60 / 0.1);
+  --shadow-raised: 0 4px 6px -1px rgb(0 40 60 / 0.06), 0 10px 28px -8px rgb(0 40 60 / 0.12);
+  --shadow-floating: 0 8px 16px -4px rgb(0 40 60 / 0.1), 0 20px 40px -12px rgb(0 40 60 / 0.16);
+  --shadow-deep: 0 16px 32px -8px rgb(0 40 60 / 0.16), 0 34px 60px -20px rgb(0 40 60 / 0.24);
+
+  /* ---------- Motion ---------- */
+  --ease-brand: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ---------- Layout ---------- */
+  --spacing-gutter: 1.25rem;
+  --container-site: 1280px;
+}
+
+/* ---------- Component tokens ---------- */
+@layer base {
+  :root {
+    --header-height: 4.5rem;
+
+    --btn-primary-bg: var(--color-teal-dark);
+    --btn-primary-bg-hover: var(--color-navy);
+    --btn-primary-fg: var(--color-white);
+
+    --card-bg: var(--color-white);
+    --card-border: var(--color-line);
+    --card-border-hover: var(--color-teal);
+
+    --gradient-brand: linear-gradient(
+      135deg,
+      var(--color-navy) 0%,
+      var(--color-navy-mid) 58%,
+      var(--color-teal-dark) 100%
+    );
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-content);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    color: var(--color-content-heading);
+    line-height: 1.14;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, brand-consistent focus for keyboard users on every surface. */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-inverse :focus-visible,
+  .on-inverse:focus-visible {
+    outline-color: var(--color-focus-inverse);
+  }
+
+  ::selection {
+    background-color: var(--color-teal-light);
+    color: var(--color-navy);
+  }
+
+  /* Tabular figures wherever step numbers or data sit in a column. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
+
+  /* Hairline rules used as the page's structural grammar. */
+  .rule-top {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+}
+
+/* Motion is opt-in: everything must remain readable and usable without it. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Revealed blocks are shown outright, before any script runs. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
