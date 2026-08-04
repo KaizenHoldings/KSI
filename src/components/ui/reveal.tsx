@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
-import { riseVariants, viewportOnce } from "@/config/motion";
+import { riseVariants, viewportRepeat } from "@/config/motion";
 import { useGroupVariants, useMotionVariants } from "@/hooks/use-motion-variants";
 
 /**
@@ -35,9 +35,9 @@ interface RevealGroupProps {
 }
 
 /**
- * Orchestrates one entrance for a whole block: the group enters the viewport
- * once and hands its children a staggered rise. Children stay visible when the
- * visitor prefers reduced motion.
+ * Orchestrates the entrance for a whole block: the group replays every time it
+ * re-enters the viewport and hands its children a staggered rise. Children
+ * stay visible when the visitor prefers reduced motion.
  */
 export function RevealGroup({
   as = "div",
@@ -54,7 +54,7 @@ export function RevealGroup({
       data-reveal=""
       initial="hidden"
       whileInView="visible"
-      viewport={viewportOnce}
+      viewport={viewportRepeat}
       variants={variants}
       className={className}
     >

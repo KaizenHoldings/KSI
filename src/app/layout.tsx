@@ -1,25 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Raleway } from "next/font/google";
 
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
 
 /**
- * Sora carries display, navigation, labels and buttons; Inter carries reading
+ * Raleway carries display, navigation, labels and buttons; Inter carries reading
  * copy. These are the only two families the brand allows.
  */
-const sora = Sora({
+const raleway = Raleway({
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-sora",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-raleway",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-inter",
 });
 
@@ -75,7 +75,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-VE"
-      className={`${sora.variable} ${inter.variable} h-full antialiased`}
+      className={`${raleway.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         {/* Entrance animations are an enhancement: without scripting every

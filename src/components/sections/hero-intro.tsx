@@ -3,8 +3,8 @@
 import { motion, useReducedMotion } from "motion/react";
 
 import { CreativeButton } from "@/components/ui/creative-button";
+import { WorkIcon } from "@/components/ui/work-icon";
 import { groupVariants, headlineVariants, riseVariants, staticVariants } from "@/config/motion";
-import { heroContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
 
 /**
@@ -33,26 +33,26 @@ export function HeroIntro() {
         className="flex items-center gap-3 font-display text-[0.72rem] font-semibold tracking-[0.18em] text-on-inverse-secondary uppercase"
       >
         <span aria-hidden="true" className="h-px w-7 bg-teal-light" />
-        {heroContent.eyebrow}
+        Sociedad de Inversión · Venezuela
       </motion.p>
 
       <motion.h1
         id="hero-title"
         data-reveal=""
         variants={headline}
-        className="mt-6 text-[clamp(2.15rem,1.1rem+4.2vw,3.65rem)] font-extrabold text-white [text-wrap:balance] [letter-spacing:-0.028em]"
+        className="mt-6 text-[clamp(1.75rem,1rem+3.2vw,2.85rem)] font-light text-white [text-wrap:balance] [letter-spacing:-0.015em]"
       >
-        {heroContent.titleLead}{" "}
-        <span className="text-teal-light">{heroContent.titleAccent}</span>{" "}
-        {heroContent.titleTail}
+        Soluciones de inversión{" "}
+        <span className="font-normal text-teal-light">estratégicas</span>{" "}
+        para el crecimiento de su capital
       </motion.h1>
 
       <motion.p
         data-reveal=""
         variants={rise}
-        className="mt-6 max-w-[52ch] text-[1.08rem] leading-relaxed text-on-inverse-secondary"
+        className="mt-6 max-w-[52ch] text-[1.02rem] font-light leading-relaxed text-on-inverse-secondary"
       >
-        {heroContent.lead}
+        Estructuramos, gestionamos y acompañamos inversiones con enfoque financiero, legal y operativo.
       </motion.p>
 
       <motion.div
@@ -62,7 +62,8 @@ export function HeroIntro() {
       >
         <CreativeButton
           href={`#${sectionIds.contact}`}
-          label={heroContent.primaryAction}
+          label="Agende una reunión"
+          icon={WorkIcon}
           variant="onNavy"
           size="lg"
           className="w-full sm:w-auto"
@@ -70,7 +71,7 @@ export function HeroIntro() {
 
         <CreativeButton
           href={`#${sectionIds.services}`}
-          label={heroContent.secondaryAction}
+          label="Conozca nuestros servicios"
           variant="onNavy"
           tone="subtle"
           size="lg"

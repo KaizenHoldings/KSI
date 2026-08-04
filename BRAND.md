@@ -166,9 +166,9 @@ Debe sentirse profundo y sobrio. Evitar degradados brillantes, multicolor, metá
 
 ## 6. Tipografía
 
-### Tipografía de display: Sora
+### Tipografía de display: Raleway
 
-Usar **Sora** para:
+Usar **Raleway** para:
 
 - Títulos.
 - Subtítulos.
@@ -348,7 +348,7 @@ Toda expresión de KFG debe:
 
 - Utilizar el isotipo oficial sin modificaciones.
 - Respetar la paleta digital del HTML de referencia.
-- Mantener Sora e Inter como únicas familias tipográficas.
+- Mantener Raleway e Inter como únicas familias tipográficas.
 - Transmitir confianza antes que espectacularidad.
 - Favorecer claridad, contraste y espacio visual.
 - Mantener consistencia en el tratamiento formal de “usted”.

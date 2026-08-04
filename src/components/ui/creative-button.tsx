@@ -4,6 +4,7 @@ import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   ReactNode,
+  ElementType,
 } from "react";
 
 import { cn } from "@/lib/cn";
@@ -180,6 +181,7 @@ const LABEL_MOTION = "duration-[320ms] ease-[var(--ease-brand)]";
 
 interface CreativeButtonContentProps {
   readonly label: string;
+  readonly icon?: ElementType;
   readonly variant: CreativeButtonVariant;
   readonly tone: CreativeButtonTone;
   readonly size: CreativeButtonSize;
@@ -187,6 +189,7 @@ interface CreativeButtonContentProps {
 
 function CreativeButtonContent({
   label,
+  icon: Icon = ArrowRight,
   variant,
   tone,
   size,
@@ -220,7 +223,7 @@ function CreativeButtonContent({
       <span className="grid place-items-center">
         <span
           className={cn(
-            "col-start-1 row-start-1 transition-[translate,opacity]",
+            "col-start-1 row-start-1 flex items-center gap-2 transition-[translate,opacity]",
             LABEL_MOTION,
             sizes.label,
             "motion-safe:group-hover:translate-x-3 motion-safe:group-hover:opacity-0",
@@ -229,6 +232,7 @@ function CreativeButtonContent({
           )}
         >
           {label}
+          <Icon className={sizes.icon} strokeWidth={2.25} aria-hidden="true" />
         </span>
 
         {/* Purely decorative duplicate — the layer above carries the name. */}
@@ -247,7 +251,7 @@ function CreativeButtonContent({
           )}
         >
           {label}
-          <ArrowRight className={sizes.icon} strokeWidth={2.25} aria-hidden="true" />
+          <Icon className={sizes.icon} strokeWidth={2.25} aria-hidden="true" />
         </span>
       </span>
     </>
@@ -257,6 +261,8 @@ function CreativeButtonContent({
 interface SharedProps {
   /** The visible, accessible label. Rendered once for assistive technology. */
   readonly label: string;
+  /** Optional icon component. Defaults to ArrowRight. */
+  readonly icon?: ElementType;
   /** The surface the button sits on. */
   readonly variant?: CreativeButtonVariant;
   /** `subtle` keeps secondary actions subordinate to the section's primary. */
@@ -303,6 +309,7 @@ export function CreativeButton(props: CreativeButtonProps): ReactNode {
   if (props.href !== undefined) {
     const {
       label,
+      icon,
       variant = "light",
       tone = "solid",
       size = "lg",
@@ -315,6 +322,7 @@ export function CreativeButton(props: CreativeButtonProps): ReactNode {
     const content = (
       <CreativeButtonContent
         label={label}
+        icon={icon}
         variant={variant}
         tone={tone}
         size={size}
@@ -336,6 +344,7 @@ export function CreativeButton(props: CreativeButtonProps): ReactNode {
 
   const {
     label,
+    icon,
     variant = "light",
     tone = "solid",
     size = "lg",
@@ -352,6 +361,7 @@ export function CreativeButton(props: CreativeButtonProps): ReactNode {
     >
       <CreativeButtonContent
         label={label}
+        icon={icon}
         variant={variant}
         tone={tone}
         size={size}

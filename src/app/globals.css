@@ -52,7 +52,7 @@
   --color-border-inverse-strong: rgb(255 255 255 / 0.28);
 
   /* ---------- Typography ---------- */
-  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* ---------- Radii ---------- */
@@ -91,12 +91,10 @@
     --card-border: var(--color-line);
     --card-border-hover: var(--color-teal);
 
-    --gradient-brand: linear-gradient(
-      135deg,
-      var(--color-navy) 0%,
-      var(--color-navy-mid) 58%,
-      var(--color-teal-dark) 100%
-    );
+    --gradient-brand: linear-gradient(135deg,
+        var(--color-navy) 0%,
+        var(--color-navy-mid) 58%,
+        var(--color-teal-dark) 100%);
   }
 
   * {

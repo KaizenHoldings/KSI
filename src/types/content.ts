@@ -13,6 +13,7 @@ export interface ProcessStep {
   readonly id: string;
   readonly title: string;
   readonly description: string;
+  readonly icon: IconName;
 }
 
 export interface FaqEntry {

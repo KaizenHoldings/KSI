@@ -1,3 +1,9 @@
+"use client";
+
+import { motion } from "motion/react";
+
+import { drawVariants, riseVariants, viewportRepeat } from "@/config/motion";
+import { useMotionVariants } from "@/hooks/use-motion-variants";
 import { cn } from "@/lib/cn";
 
 interface SectionHeadingProps {
@@ -24,9 +30,16 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   const isDark = tone === "dark";
+  const headingVariants = useMotionVariants(riseVariants);
+  const ruleVariants = useMotionVariants(drawVariants);
 
   return (
-    <div
+    <motion.div
+      data-reveal=""
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportRepeat}
+      variants={headingVariants}
       className={cn(
         "max-w-2xl",
         align === "center" && "mx-auto text-center",
@@ -40,10 +53,11 @@ export function SectionHeading({
           isDark ? "text-teal-light" : "text-content-accent",
         )}
       >
-        <span
+        <motion.span
           aria-hidden="true"
+          variants={ruleVariants}
           className={cn(
-            "h-px w-7",
+            "h-px w-7 origin-left",
             isDark ? "bg-teal-light/70" : "bg-teal-dark/60",
           )}
         />
@@ -53,7 +67,7 @@ export function SectionHeading({
       <h2
         id={id}
         className={cn(
-          "mt-5 text-[clamp(1.75rem,1.1rem+2.6vw,2.6rem)] font-bold",
+          "mt-5 text-[clamp(1.75rem,1.1rem+2.6vw,2.6rem)] font-light",
           isDark && "text-white",
         )}
       >
@@ -72,6 +86,6 @@ export function SectionHeading({
           {lead}
         </p>
       ) : null}
-    </div>
+    </motion.div>
   );
 }

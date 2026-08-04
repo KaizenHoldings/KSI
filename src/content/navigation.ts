@@ -13,26 +13,26 @@ export const sectionIds = {
 } as const;
 
 export const primaryNav: readonly NavLink[] = [
-  { href: `#${sectionIds.about}`, label: "Nosotros" },
-  { href: `#${sectionIds.services}`, label: "Servicios" },
-  { href: `#${sectionIds.process}`, label: "Proceso" },
-  { href: `#${sectionIds.advantages}`, label: "Ventajas" },
-  { href: `#${sectionIds.faq}`, label: "Preguntas" },
-  { href: `#${sectionIds.contact}`, label: "Contacto" },
+  { href: `/#${sectionIds.about}`, label: "Nosotros" },
+  { href: `/#${sectionIds.services}`, label: "Servicios" },
+  { href: `/#${sectionIds.process}`, label: "Proceso" },
+  { href: `/#${sectionIds.advantages}`, label: "Ventajas" },
+  { href: `/#${sectionIds.faq}`, label: "Preguntas" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export const footerNav: readonly NavLink[] = [
-  { href: `#${sectionIds.hero}`, label: "Inicio" },
-  { href: `#${sectionIds.about}`, label: "Quiénes somos" },
-  { href: `#${sectionIds.services}`, label: "Servicios" },
-  { href: `#${sectionIds.sectors}`, label: "Sectores" },
-  { href: `#${sectionIds.process}`, label: "Cómo funciona" },
-  { href: `#${sectionIds.advantages}`, label: "Ventajas" },
-  { href: `#${sectionIds.faq}`, label: "Preguntas frecuentes" },
-  { href: `#${sectionIds.contact}`, label: "Contacto" },
+  { href: `/#${sectionIds.hero}`, label: "Inicio" },
+  { href: `/#${sectionIds.about}`, label: "Quiénes somos" },
+  { href: `/#${sectionIds.services}`, label: "Servicios" },
+  { href: `/#${sectionIds.sectors}`, label: "Sectores" },
+  { href: `/#${sectionIds.process}`, label: "Cómo funciona" },
+  { href: `/#${sectionIds.advantages}`, label: "Ventajas" },
+  { href: `/#${sectionIds.faq}`, label: "Preguntas frecuentes" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export const primaryCta = {
   label: "Agende una reunión",
-  href: `#${sectionIds.contact}`,
+  href: "/contacto",
 } as const;

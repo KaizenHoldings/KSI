@@ -33,6 +33,22 @@ export const fadeVariants: Variants = {
   visible: { opacity: 1, transition: transitions.enter },
 };
 
+/** The kicker rule draws itself left-to-right; pair with `origin-left`. */
+export const drawVariants: Variants = {
+  hidden: { scaleX: 0 },
+  visible: { scaleX: 1, transition: transitions.enter },
+};
+
+/** A photograph settling into place: a small scale-down reads as arrival, not zoom. */
+export const imageRevealVariants: Variants = {
+  hidden: { opacity: 0, scale: 1.06 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: brandEase },
+  },
+};
+
 /** Reserved for the single headline moment in the hero. */
 export const headlineVariants: Variants = {
   hidden: { opacity: 0, y: 26, filter: "blur(10px)" },
@@ -50,4 +66,5 @@ export const staticVariants: Variants = {
   visible: { opacity: 1 },
 };
 
-export const viewportOnce = { once: true, amount: 0.2 } as const;
+/** `once: false` — every reveal replays each time its section re-enters the viewport. */
+export const viewportRepeat = { once: false, amount: 0.2 } as const;

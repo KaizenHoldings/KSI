@@ -11,22 +11,6 @@ import type {
  * required by BRAND.md. No figure, claim or testimonial is added here.
  */
 
-export const heroContent = {
-  eyebrow: "Sociedad de Inversión · Venezuela",
-  titleLead: "Soluciones de inversión",
-  titleAccent: "estratégicas",
-  titleTail: "para el crecimiento de su capital",
-  lead: "Estructuramos, gestionamos y acompañamos inversiones con enfoque financiero, legal y operativo.",
-  primaryAction: "Agende una reunión",
-  secondaryAction: "Conozca nuestros servicios",
-  credentialsLabel: "Marco regulatorio",
-  credentials: [
-    "Supervisión SUNAVAL",
-    "Caja Venezolana de Valores",
-    "Procesos KYC / AML",
-    "Auditorías periódicas",
-  ],
-} as const;
 
 export const aboutContent = {
   eyebrow: "Quiénes somos",
@@ -131,7 +115,7 @@ export const processContent = {
   title: "Del capital al retorno",
   lead: "Un proceso estructurado, transparente y supervisado en cada etapa.",
   imageAlt:
-    "Pantalla con indicadores y gráficos de seguimiento utilizados durante el análisis de una operación.",
+    "Vista en blanco y negro desde abajo de dos torres curvas de fachada acanalada, con un patio interior entre ellas.",
   imageCaption:
     "Cada oportunidad atraviesa un análisis financiero, legal y operativo antes de entrar en el portafolio.",
   steps: [
@@ -139,31 +123,37 @@ export const processContent = {
       id: "identificacion",
       title: "Identificación",
       description: "Detección de oportunidades de inversión.",
+      icon: "search",
     },
     {
       id: "evaluacion",
       title: "Evaluación",
       description: "Análisis financiero, legal y operativo.",
+      icon: "scale",
     },
     {
       id: "estructuracion",
       title: "Estructuración",
       description: "Diseño del vehículo legal y financiero.",
+      icon: "structure",
     },
     {
       id: "levantamiento",
       title: "Levantamiento",
       description: "Captación de capital de inversionistas.",
+      icon: "coins",
     },
     {
       id: "ejecucion",
       title: "Ejecución",
       description: "Despliegue del capital y gestión activa.",
+      icon: "trend",
     },
     {
       id: "retorno",
       title: "Retorno",
       description: "Seguimiento y distribución de rendimientos.",
+      icon: "check",
     },
   ] as const satisfies readonly ProcessStep[],
 } as const;

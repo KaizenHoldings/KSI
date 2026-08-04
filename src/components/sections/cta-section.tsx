@@ -13,7 +13,7 @@ export function CtaSection() {
           <RevealItem as="span">
             <h2
               id="cta-title"
-              className="text-[clamp(1.6rem,1.1rem+2.2vw,2.35rem)] font-bold text-white"
+              className="text-[clamp(1.6rem,1.1rem+2.2vw,2.35rem)] font-light text-white"
             >
               {ctaContent.title}
             </h2>

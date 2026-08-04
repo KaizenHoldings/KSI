@@ -1,63 +1,93 @@
+"use client";
+
+import { motion } from "motion/react";
 import Image from "next/image";
 
-import { ProcessRail } from "@/components/sections/process-rail";
 import { Container } from "@/components/ui/container";
 import { RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { imageRevealVariants, viewportRepeat } from "@/config/motion";
 import { processContent } from "@/content/home";
 import { sectionIds } from "@/content/navigation";
+import { useMotionVariants } from "@/hooks/use-motion-variants";
 
 export function ProcessSection() {
+  const imageVariants = useMotionVariants(imageRevealVariants);
+
   return (
     <Section
       id={sectionIds.process}
       tone="neutral"
-      density="loose"
       labelledBy="process-title"
+      className="!py-0"
     >
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16">
-          <RevealGroup>
-            <RevealItem>
+      <div className="relative">
+        {/* Desktop full-bleed image (Right half) */}
+        <div className="hidden lg:block absolute inset-y-0 right-0 w-1/2 overflow-hidden">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportRepeat}
+            variants={imageVariants}
+            className="absolute inset-0"
+          >
+            <Image
+              src="/images/newsection2.jpg"
+              alt={processContent.imageAlt}
+              fill
+              sizes="50vw"
+              className="object-cover object-[50%_35%]"
+            />
+          </motion.div>
+          {/* Floating caption aligned to the left side of the image */}
+          <div className="absolute bottom-8 left-12 right-12 flex items-center gap-6 font-display text-[0.75rem] font-semibold tracking-[0.14em] text-white shadow-sm uppercase z-10">
+            <span className="text-left leading-relaxed max-w-[50ch]">
+              {processContent.imageCaption}
+            </span>
+            <span aria-hidden="true" className="h-px w-10 bg-white/60 shrink-0" />
+          </div>
+        </div>
+
+        <Container className="relative">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24 min-h-[100dvh] py-20 lg:py-28">
+            
+            {/* Text Content (Left side) */}
+            <div className="order-1">
               <SectionHeading
                 id="process-title"
                 kicker={processContent.eyebrow}
                 title={processContent.title}
                 lead={processContent.lead}
               />
-            </RevealItem>
-          </RevealGroup>
+            </div>
 
-          <RevealGroup>
-            <RevealItem>
-              <figure>
-                {/* Framed on the chart texture in the lower-left of the photo.
-                    The screen's own legible figures are cropped out on purpose:
-                    they belong to another product and must never read as KFG's
-                    results. */}
-                <div className="relative aspect-16/9 overflow-hidden rounded-lg border border-line bg-white shadow-[var(--shadow-raised)]">
-                  <Image
-                    src="/images/image3.jpg"
-                    alt={processContent.imageAlt}
-                    width={2947}
-                    height={2121}
-                    sizes="(min-width: 1024px) 125vw, 250vw"
-                    className="absolute bottom-0 left-[-5.3%] h-auto w-[263%] max-w-none"
-                  />
-                </div>
-                <figcaption className="mt-3 max-w-[52ch] text-[0.88rem] leading-relaxed text-content-secondary">
-                  {processContent.imageCaption}
-                </figcaption>
-              </figure>
-            </RevealItem>
-          </RevealGroup>
-        </div>
+            {/* Mobile image (hidden on desktop) */}
+            <RevealGroup className="order-2 lg:hidden">
+              <RevealItem>
+                <figure className="relative">
+                  <div className="relative aspect-4/3 overflow-hidden rounded-lg bg-tint shadow-[var(--shadow-raised)]">
+                    <Image
+                      src="/images/newsection2.jpg"
+                      alt={processContent.imageAlt}
+                      fill
+                      sizes="(min-width: 640px) 70vw, 92vw"
+                      className="object-cover object-[50%_35%]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 flex items-center gap-2.5 font-display text-[0.7rem] font-semibold tracking-[0.14em] text-muted uppercase">
+                    <span aria-hidden="true" className="h-px w-5 bg-line-strong" />
+                    {processContent.imageCaption}
+                  </figcaption>
+                </figure>
+              </RevealItem>
+            </RevealGroup>
 
-        <div className="mt-16 lg:mt-24">
-          <ProcessRail />
-        </div>
-      </Container>
+            {/* Spacer for desktop to match the absolute right-half image */}
+            <div className="hidden lg:block order-2" aria-hidden="true" />
+          </div>
+        </Container>
+      </div>
     </Section>
   );
 }

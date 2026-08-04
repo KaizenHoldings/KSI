@@ -55,7 +55,7 @@ export function IsotypeMark({
     <span
       className={cn(
         "inline-flex shrink-0 items-center justify-center",
-        surface === "light" && "rounded-sm bg-white",
+        surface === "light" && "aspect-square rounded-full bg-white",
         className,
       )}
     >
