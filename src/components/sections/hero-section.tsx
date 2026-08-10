@@ -8,6 +8,7 @@ import { HeroIntro } from "@/components/sections/hero-intro";
 import { Container } from "@/components/ui/container";
 import { NodeNetwork } from "@/components/ui/node-network";
 import { sectionIds } from "@/content/navigation";
+import { useHydrated } from "@/hooks/use-hydrated";
 
 /**
  * First viewport. The offer is stated once, and the single action is visible
@@ -25,6 +26,8 @@ import { sectionIds } from "@/content/navigation";
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const hydrated = useHydrated();
+  const reduceMotion = hydrated ? prefersReducedMotion : false;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -52,7 +55,7 @@ export function HeroSection() {
   const foregroundFilter = useTransform(foregroundBlur, (value) => `blur(${value}px)`);
   const foregroundY = useTransform(progress, [0, 1], [0, -160]);
 
-  const backdropStyle = prefersReducedMotion
+  const backdropStyle = reduceMotion
     ? undefined
     : {
         scale: backdropScale,
@@ -63,10 +66,10 @@ export function HeroSection() {
   // The network stays crisp while it's visible — only fading, no blur or lift
   // — so it reads as the one plane that stays in focus while the photo behind
   // it and the text in front of it both soften away.
-  const networkStyle = prefersReducedMotion
+  const networkStyle = reduceMotion
     ? undefined
     : { opacity: foregroundOpacity, willChange: "opacity" };
-  const contentStyle = prefersReducedMotion
+  const contentStyle = reduceMotion
     ? undefined
     : {
         opacity: foregroundOpacity,
