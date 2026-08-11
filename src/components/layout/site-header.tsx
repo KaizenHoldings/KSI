@@ -34,16 +34,6 @@ export function SiteHeader({ variant = "transparent" }: SiteHeaderProps = {}) {
 
   return (
     <>
-      <a
-        href="#contenido"
-        className={cn(
-          "sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[1200]",
-          "focus:rounded-pill focus:bg-navy focus:px-5 focus:py-3",
-          "focus:font-display focus:text-sm focus:font-semibold focus:text-white",
-        )}
-      >
-        Ir al contenido principal
-      </a>
 
       <header
         className={cn(
