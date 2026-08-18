@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { CreativeButton } from "@/components/ui/creative-button";
 import { WorkIcon } from "@/components/ui/work-icon";
 import { groupVariants, headlineVariants, riseVariants, staticVariants } from "@/config/motion";
-import { sectionIds } from "@/content/navigation";
+import { primaryCta, sectionIds } from "@/content/navigation";
 
 /**
  * The page's one authored motion moment: the headline resolves out of a soft
@@ -61,8 +61,8 @@ export function HeroIntro() {
         className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
       >
         <CreativeButton
-          href={`#${sectionIds.contact}`}
-          label="Agende una reunión"
+          href={primaryCta.href}
+          label={primaryCta.label}
           icon={WorkIcon}
           variant="onNavy"
           size="lg"
